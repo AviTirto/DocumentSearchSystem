@@ -27,4 +27,4 @@ class OCRModel:
 
         ocr_result = self.parser.parse(response.content)
 
-        return {'text': ocr_result, 'input_tokens': response.usage_metadata['input_tokens'], 'output_tokens': response.usage_metadata['output_tokens']}
+        return {'result': ocr_result, 'input_tokens': response.usage_metadata['input_tokens'], 'output_tokens': response.usage_metadata['output_tokens']}

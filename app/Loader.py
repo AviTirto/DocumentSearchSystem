@@ -8,14 +8,14 @@ class Loader:
         pass
 
     # Convert PDF to images (one image per page)
-    def pdf_to_images(pdf_path):
+    def pdf_to_images(self, pdf_path):
         images = convert_from_path(pdf_path)  # Convert all PDF pages to images
         if not images:
             return None
         return images
     
     # Convert an image to a base64-encoded string
-    def image_to_base64(image):
+    def image_to_base64(self, image):
         img_bytes = io.BytesIO()
         image.save(img_bytes, format="JPEG")  # Save the image as JPEG
         img_bytes = img_bytes.getvalue()
@@ -24,8 +24,7 @@ class Loader:
         img_base64 = base64.b64encode(img_bytes).decode("utf-8")
         return img_base64
 
-    @staticmethod
-    def clean_text_for_rag(raw_text):
+    def clean_text_for_rag(self, raw_text):
         """Cleans raw text for RAG system: keeps only letters, numbers, and selected symbols, while removing standalone number lines."""
         
         # Define allowed characters

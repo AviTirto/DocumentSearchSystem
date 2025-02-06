@@ -11,7 +11,7 @@ class CDB:
             name="ppts",
         )
 
-    def add_embeddings(self, id, title, slide_num, rag_text, full_text):
+    def add_slide(self, id, title, page_num, rag_text, full_text):
         try:
             self.ppts.add(
                 ids = [id],
@@ -19,7 +19,7 @@ class CDB:
                 metadatas = [{
                     'title': title,
                     'full_text': full_text,
-                    'slide': slide_num
+                    'page_num': page_num
                 }]
             )
             return True
