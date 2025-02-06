@@ -1,4 +1,4 @@
-from types import OCRResult
+from ppt_types import OCRResult
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.output_parsers import PydanticOutputParser
 from langchain.schema import HumanMessage, SystemMessage

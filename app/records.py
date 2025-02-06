@@ -1,27 +1,30 @@
 import chromadb
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class CDB:
     def __init__(self):
         self.db = chromadb.PersistentClient(
-            path=os.getenv('DB_PATH')
+            path=os.getenv('CHROMA_DB_PATH')
         )
 
         self.ppts = self.db.get_or_create_collection(
             name="ppts",
         )
 
-    def add_slide(self, id, title, page_num, rag_text, full_text):
+    def add_slide(self, id, title, page_num, rag_text):
         try:
             self.ppts.add(
                 ids = [id],
                 documents = [rag_text],
                 metadatas = [{
                     'title': title,
-                    'full_text': full_text,
                     'page_num': page_num
                 }]
             )
+
             return True
         except Exception as e:
             print(e)

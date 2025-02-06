@@ -9,7 +9,6 @@ class Slide(BaseModel):
     id: str
     page_num: int
     rag_text: str
-    full_text: str
 
 class PPT(BaseModel):
     title: str
